@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main(){
+    //initialize vars
+    double denominator{1.0};
+    double pi{0};
+    string piString;
+    double desiredPi;    
+    int terms;
+    int firstDesiredTerm;
+
+    //format output floating point numbers to show 10 digits after 
+    // decimal poin
+    cout << setprecision (10) <<fixed;
+
+    for (terms = 1;  ; terms++){
+        if(0 == terms % 2){ //if term is even
+            pi -= 4/denominator;
+        }
+        else{ //if term is odd
+            pi += 4/denominator;
+        }
+
+        // draw table
+        cout << terms << "\t" << pi << endl;
+
+        //determin first time the pi begains with 3.14159
+        piString = to_string(pi).substr(0,7);
+        if(piString == "3.14159"){
+             firstDesiredTerm = terms;
+             desiredPi = pi;
+             break;
+        }
+        denominator += 2;
+    }//end for
+
+    cout << "The first time that pi value begans with 3.14159 "
+        << "the number of terms are " << firstDesiredTerm << " and pi value is  "<< desiredPi <<endl;
+}//end main
+
+c++stringpi
+Share
+Improve this question
+Follow
